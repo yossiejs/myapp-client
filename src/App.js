@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Route } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
-import Home from './containers/Home';
-import User from './containers/User';
+import UserPage from './components/UserPage';
+import HomePage from './components/HomePage';
 
 const styles = {
   root: {
@@ -14,8 +14,8 @@ function App (props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
-      <Route path="/users/me" component={User}></Route>
-      <Route path="/" exact={true} component={Home}></Route>
+      <Route path="/users/me" component={UserPage}></Route>
+      <Route path="/" exact={true} component={HomePage}></Route>
     </div>
   );
 }
