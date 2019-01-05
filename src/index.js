@@ -9,9 +9,9 @@ import createBrowserHistory from 'history/createBrowserHistory';
 const history = createBrowserHistory();
 
 ReactDOM.render(
-    <Router history={history}>
-        <App />
-    </Router>
+  <Router history={history}>
+    <App />
+  </Router>
 , document.getElementById('root'));
 
 serviceWorker.unregister();

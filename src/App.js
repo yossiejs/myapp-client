@@ -15,6 +15,9 @@ const styles = {
 function App (props) {
   const { classes } = props;
   const initialState = {
+    user: {
+      displayName: 'anonymous'
+    },
     count: 0,
     hoge: 'hoge',
   };
