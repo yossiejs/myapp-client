@@ -1,28 +1,23 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route } from 'react-router-dom';
+import { withStyles } from '@material-ui/core/styles';
+import Home from './containers/Home';
+import User from './containers/User';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+const styles = {
+  root: {
+    flexGrow: 1,
+  },
 }
 
-export default App;
+function App (props) {
+  const { classes } = props;
+  return (
+    <div className={classes.root}>
+      <Route path="/users/me" component={User}></Route>
+      <Route path="/" exact={true} component={Home}></Route>
+    </div>
+  );
+}
+
+export default withStyles(styles)(App);
