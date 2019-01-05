@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import NaviBar from "./NaviBar";
-import { AppContext } from '../App';
+import { AppContext } from '../contexts/AppContext';
 
 const styles = {
 
 };
 
-function UserPage(props) {
+const UserPage = props => {
   const { classes } = props;
   const [ appState ] = useContext(AppContext);
 

@@ -3,26 +3,20 @@ import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import NaviBar from "./NaviBar";
-import { AppContext } from '../App';
+import { AppContext } from '../contexts/AppContext';
 
 const styles = {
   
 };
 
-function HomePage(props) {
+const HomePage = props => {
   const { classes } = props;
-  const [ appState, setAppState ] = useContext(AppContext);
+  const [ appState, appDispatch ] = useContext(AppContext);
 
-  function handleButtonClick() {
-    setAppState(prev => ({
-      ...prev,
-      count: prev.count + 1,
-      hoge: prev.hoge + (
-        prev.count % 2 === 0
-        ? 'foo'
-        : 'bar'
-      ),
-    }));
+  const setCount = value => appDispatch({ type: 'count', payload: value });
+
+  const handleButtonClick = () => {
+    setCount(appState.count + 1);
   }
 
   return (

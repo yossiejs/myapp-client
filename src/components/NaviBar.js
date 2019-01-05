@@ -21,7 +21,7 @@ const styles = {
   },
 };
 
-function NaviBar(props) {
+const NaviBar = props => {
   const { classes } = props;
   return (
     <div className={classes.root}>
