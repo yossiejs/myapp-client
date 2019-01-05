@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useReducer } from 'react';
 import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -9,14 +9,30 @@ const styles = {
   
 };
 
+const initialState = {
+  count: 0,
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'count':
+      return { ...state, count: action.payload };
+    default:
+      return initialState;
+  }
+};
+
 const HomePage = props => {
   const { classes } = props;
   const [ appState, appDispatch ] = useContext(AppContext);
+  const [ state, dispatch ] = useReducer(reducer, initialState);
 
-  const setCount = value => appDispatch({ type: 'count', payload: value });
+  const setAppCount = value => appDispatch({ type: 'count', payload: value });
+  const setCount = value => dispatch({ type: 'count', payload: value });
 
   const handleButtonClick = () => {
-    setCount(appState.count + 1);
+    setAppCount(appState.count + 1);
+    setCount(state.count + 1);
   }
 
   return (
@@ -25,7 +41,7 @@ const HomePage = props => {
         <NaviBar />
       </header>
       <Paper>
-        Welcome, {appState.count}<br/>
+        Welcome, AppCount:{appState.count}, Count: {state.count}<br/>
         {appState.hoge}<br/>
         <button onClick={handleButtonClick}>+1</button><br/>
         <br/>
