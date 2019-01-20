@@ -31,7 +31,7 @@ const NaviBar = props => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" color="inherit" className={classes.grow}>
-            transword
+            myapp
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>
